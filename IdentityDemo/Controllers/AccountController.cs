@@ -14,16 +14,19 @@ namespace IdentityDemo.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
         }
-        public IActionResult Register()
+        public IActionResult Register(string returnUrl = null)
         {
+            ViewData["ReturnUrl"] = returnUrl;
             RegisterViewModel model = new();
             return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(RegisterViewModel model)
+        public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
         {
+            ViewData["ReturnUrl"] = returnUrl;
+            returnUrl ??= Url.Content("~/");
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser
@@ -37,7 +40,7 @@ namespace IdentityDemo.Controllers
                 if (result.Succeeded)
                 {
                     await _signInManager.SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("Index", "Home");
+                    return Url.IsLocalUrl(returnUrl) ? Redirect(returnUrl) : RedirectToAction("Index", "Home");
                 }
 
                 AddErrors(result);
