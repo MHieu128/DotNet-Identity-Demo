@@ -1,0 +1,17 @@
+﻿.lockout-container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.lockout-title {
+    color: #d9534f;
+}
+
+.lockout-message {
+    margin: 20px 0;
+}
+
+.btn {
+    padding: 10px 20px;
+    font-size: 16px;
+}

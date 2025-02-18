@@ -1,6 +1,8 @@
 using IdentityDemo.Data;
 using IdentityDemo.Models;
+using IdentityDemo.Services;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,7 +13,24 @@ builder.Services.AddDbContext<ApplicationDBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));  
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
-    .AddEntityFrameworkStores<ApplicationDBContext>();
+    .AddEntityFrameworkStores<ApplicationDBContext>()
+    .AddDefaultTokenProviders();
+
+builder.Services.AddTransient<IEmailSender, EmailSender>();
+
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    options.Password.RequireDigit = true;
+    options.Password.RequireLowercase = true;
+    options.Password.RequireUppercase = true;
+    options.Password.RequireNonAlphanumeric = true;
+    options.Password.RequiredLength = 8;
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+    options.Lockout.MaxFailedAccessAttempts = 5;
+    //options.Lockout.AllowedForNewUsers = true;
+    options.User.RequireUniqueEmail = true;
+    //options.SignIn.RequireConfirmedEmail = true;
+});
 
 var app = builder.Build();
 
