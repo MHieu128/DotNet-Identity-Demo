@@ -1,8 +1,37 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Welcome to Identity Demo";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="hero-section">
+    <div class="container">
+        <h1 class="hero-title">Welcome to Identity Demo</h1>
+        <p class="hero-subtitle">Discover the power of ASP.NET Core Identity</p>
+        <a href="/Identity/Account/Register" class="btn btn-primary btn-lg">Get Started</a>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <div class="row features">
+        <div class="col-md-4">
+            <div class="feature-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Secure Authentication</h3>
+                <p>Built-in security features with ASP.NET Core Identity</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="feature-card">
+                <i class="fas fa-user-lock"></i>
+                <h3>User Management</h3>
+                <p>Easy user registration and role-based authorization</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="feature-card">
+                <i class="fas fa-cog"></i>
+                <h3>Customizable</h3>
+                <p>Flexible configuration to meet your needs</p>
+            </div>
+        </div>
+    </div>
 </div>

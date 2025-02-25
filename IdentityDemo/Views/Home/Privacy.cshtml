@@ -1,6 +1,88 @@
 ﻿@{
     ViewData["Title"] = "Privacy Policy";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<div class="container py-5">
+    <h1 class="display-4 mb-4 text-primary">@ViewData["Title"]</h1>
+    
+    <div class="row g-4">
+        <div class="col-12">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h2 class="h4 text-primary">Your Privacy Matters</h2>
+                    <p class="text-muted">Last updated: @DateTime.Now.ToString("MMMM dd, yyyy")</p>
+                    <hr>
+                    <p>We respect your privacy and are committed to protecting your personal data.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h3 class="h5 text-primary"><i class="bi bi-shield-lock me-2"></i>Data Collection</h3>
+                    <ul class="list-unstyled">
+                        <li><i class="bi bi-check2 me-2"></i>Account information</li>
+                        <li><i class="bi bi-check2 me-2"></i>Usage data</li>
+                        <li><i class="bi bi-check2 me-2"></i>Communication records</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h3 class="h5 text-primary"><i class="bi bi-gear me-2"></i>Data Usage</h3>
+                    <ul class="list-unstyled">
+                        <li><i class="bi bi-check2 me-2"></i>Service improvement</li>
+                        <li><i class="bi bi-check2 me-2"></i>Security enhancement</li>
+                        <li><i class="bi bi-check2 me-2"></i>Communication</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h3 class="h5 text-primary"><i class="bi bi-shield-check me-2"></i>Security Measures</h3>
+                    <p>We implement industry-standard security measures to protect your data:</p>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="bi bi-lock-fill text-primary me-2"></i>
+                                <span>Encryption at rest</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="bi bi-shield-fill-check text-primary me-2"></i>
+                                <span>Secure transmission</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="bi bi-person-badge text-primary me-2"></i>
+                                <span>Access control</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h3 class="h5 text-primary"><i class="bi bi-envelope me-2"></i>Contact Us</h3>
+                    <p>For privacy-related inquiries, please contact us at:</p>
+                    <div class="d-flex align-items-center">
+                        <i class="bi bi-envelope-fill text-primary me-2"></i>
+                        <a href="mailto:privacy@example.com" class="text-decoration-none">privacy@example.com</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
