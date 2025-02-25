@@ -68,7 +68,7 @@
         }
     </style>
 </head>
-<body>
+<body data-bs-theme="light">
     <header>
         <nav class="navbar navbar-expand-sm navbar-light fixed-top shadow-sm">
             <div class="container-fluid">
@@ -121,23 +121,33 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const savedTheme = localStorage.getItem('theme') || 'light';
-            const html = document.documentElement;
-            const icon = document.getElementById('themeIcon');
-            
-            html.setAttribute('data-bs-theme', savedTheme);
-            icon.className = savedTheme === 'light' ? 'bi bi-sun-fill' : 'bi bi-moon-fill';
+            document.body.setAttribute('data-bs-theme', savedTheme);
+            document.documentElement.setAttribute('data-bs-theme', savedTheme);
+            document.getElementById('themeIcon').className = 
+                savedTheme === 'light' ? 'bi bi-sun-fill' : 'bi bi-moon-fill';
         });
 
         function toggleTheme() {
-            const html = document.documentElement;
+            const body = document.body;
             const icon = document.getElementById('themeIcon');
-            const currentTheme = html.getAttribute('data-bs-theme');
+            const currentTheme = body.getAttribute('data-bs-theme');
             const newTheme = currentTheme === 'light' ? 'dark' : 'light';
             
-            html.setAttribute('data-bs-theme', newTheme);
+            body.setAttribute('data-bs-theme', newTheme);
+            document.documentElement.setAttribute('data-bs-theme', newTheme);
             icon.className = newTheme === 'light' ? 'bi bi-sun-fill' : 'bi bi-moon-fill';
             localStorage.setItem('theme', newTheme);
         }
+
+        // Check system theme preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.body.setAttribute('data-bs-theme', 'dark');
+        }
+        
+        // Listen for theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+            document.body.setAttribute('data-bs-theme', e.matches ? 'dark' : 'light');
+        });
     </script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -146,18 +156,20 @@
     @section Scripts {
         <script>
             function toggleTheme() {
-                const html = document.documentElement;
+                const body = document.body;
                 const icon = document.getElementById('themeIcon');
-                const currentTheme = html.getAttribute('data-bs-theme');
+                const currentTheme = body.getAttribute('data-bs-theme');
                 const newTheme = currentTheme === 'light' ? 'dark' : 'light';
                 
-                html.setAttribute('data-bs-theme', newTheme);
+                body.setAttribute('data-bs-theme', newTheme);
+                document.documentElement.setAttribute('data-bs-theme', newTheme);
                 icon.className = newTheme === 'light' ? 'bi bi-sun-fill' : 'bi bi-moon-fill';
                 localStorage.setItem('theme', newTheme);
             }
 
             // Set initial theme
             const savedTheme = localStorage.getItem('theme') || 'light';
+            document.body.setAttribute('data-bs-theme', savedTheme);
             document.documentElement.setAttribute('data-bs-theme', savedTheme);
             document.getElementById('themeIcon').className = 
                 savedTheme === 'light' ? 'bi bi-sun-fill' : 'bi bi-moon-fill';

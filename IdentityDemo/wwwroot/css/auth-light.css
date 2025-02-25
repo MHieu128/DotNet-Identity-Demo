@@ -1,0 +1,28 @@
+[data-bs-theme="light"] .light-card {
+    background: #ffffff;
+    color: #333333;
+}
+
+[data-bs-theme="light"] .light-input {
+    background-color: #ffffff;
+    border: 1px solid #ced4da;
+    color: #333333;
+}
+
+[data-bs-theme="light"] .light-input:focus {
+    background-color: #ffffff;
+    color: #333333;
+}
+
+[data-bs-theme="light"] .light-label {
+    color: #333333;
+}
+
+[data-bs-theme="light"] .light-btn {
+    background: linear-gradient(to right, #0d6efd, #0b5ed7);
+    border: none;
+}
+
+[data-bs-theme="light"] .light-link {
+    color: #0d6efd;
+}
